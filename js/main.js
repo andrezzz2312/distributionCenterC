@@ -82,13 +82,6 @@ const quality = document.querySelector('#quality_button')
 const mainMenuB = document.querySelectorAll('.mainMenuB')
 const titulo = document.querySelectorAll('.titulo')
 
-// let details = navigator.userAgent
-// let regexp = /android|iphone|kindle|ipad/i
-// let ios = /iphone|ipad/i
-// let macosPlatforms = /(macintosh|macintel|macppc|mac68k|macos)/i
-// let isMobileDevice = regexp.test(details)
-// let isIOS = ios.test(details)
-// let isMac = macosPlatforms.test(details)
 let isMobile = false
 window.mobileCheck = function () {
 	let mobile = (function (a) {
@@ -111,21 +104,6 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
 } else {
 	isIOS = false
 }
-
-// var buttonsText = []
-
-// mainMenuB.forEach((e, i) => {
-// const splitText = e.textContent.trim().split('\n')
-// const splitText = e.textContent
-// 	.replace(/[\n\r]+|[\s]{2,}/g, ' ')
-// 	.trim()
-// 	.split(' ')
-// splitText[1]
-// 	? (buttonsText[i] =
-// 			splitText[0].toLowerCase() + splitText[1].substring(0, 2))
-// 	: (buttonsText[i] = splitText[0].toLowerCase())
-// console.log(buttonsText[i])
-// })
 
 const buttonContent = {
 	turnlock10: {
@@ -214,11 +192,18 @@ const buttonContent = {
 		],
 		inputButtonGrid: [
 			`Standard\nOperation`,
+			`Operation With\nMetal Detector`,
 			`Piggybacking\nPrevention`,
 			`Emergency\nEgress`,
 			`Finish\nOptions`,
 		],
-		inputButtonId: [`standardO`, `piggybackingP`, `emergencyE`, `finishO`],
+		inputButtonId: [
+			`standardO`,
+			`operationW`,
+			`piggybackingP`,
+			`emergencyE`,
+			`finishO`,
+		],
 		boxInfo: {
 			standardO: {
 				textLeft: '0%',
@@ -234,6 +219,22 @@ const buttonContent = {
 					`Turnstile does not allow tailgating as it only rotates 120\u00B0 then relocks`,
 				],
 				delay: [1, 5, 11, 16],
+			},
+			operationW: {
+				textLeft: '0%',
+				textTop: '0%',
+				title: `<span style = 'font-weight:bold' data-subId = 'standardO'>Operation with Metal Detector</span>`,
+
+				content: [
+					`Credential or biometric is presented`,
+					`Valid credential turns LED green, unlocks turnstile and provides audio signal (tone/voice)`,
+					`User walks through metal detector`,
+					`If no metal is detected, turnstile unlocks, rotates 120\u00B0, then stops and relocks`,
+					`If metal is detected, turnstile remains locked and alarm sounds`,
+					`User must exit the turnstile backwards to divest metal`,
+					`Configuration can be provided with a metal detector for inbound and outbound traffic flow`,
+				],
+				delay: [2, 6, 11, 14, 20, 22, 24],
 			},
 			piggybackingP: {
 				textLeft: '0%',
@@ -363,7 +364,7 @@ const buttonContent = {
 					`Valid credential turns LEDs green on the vertical entry post and internal\nmidpost, opens outer door and provides audible signal. Opposite side LED\nturns red until the user exits the door, and the outer door closes`,
 					`StereoVision takes sampling 1`,
 					`Door starts to close. Just prior to closure, StereoVision takes sampling 2`,
-					`An optional, internal biometric device is activated upon door closure.\nThis validates user and prevets substitution`,
+					`An optional, internal biometric device is activated upon door closure.\nThis validates user and prevents substitution`,
 					`Interior door opens, then closes`,
 				],
 				delay: [1, 5, 17, 21, 26, 31],
@@ -667,16 +668,6 @@ if (!isMobile) {
 } else if (isIOS) {
 	fullscreen_button.style.display = 'none'
 }
-
-// else {
-// if (isIOS) {
-// 	fullscreen_button.style.display = 'none'
-// }
-// }
-
-// if (isMac) {
-// 	alertdiv.style.display = 'flex'
-// }
 
 // Set which videos are going to swap
 function InterpolateVideo(videoToPause, videoToVanish, videoToPlay) {
@@ -1181,7 +1172,7 @@ function createContent(obj, parent) {
 								i + 1
 							}.png`
 							if (isMobile) {
-								image.style.width = '15em'
+								image.style.width = '20em'
 							} else {
 								image.style.width = '24em'
 							}
@@ -1318,7 +1309,7 @@ function setFontSizes() {
 	globalMediumTitleFontvar = `calc(7px + (35 - 7) * ((${
 		containVideoWidth + 'px'
 	} - 320px) / (1440 - 320)))`
-	globalBigTitleFontvar = `calc(8px + (45 - 8) * ((${
+	globalBigTitleFontvar = `calc(8px + (35 - 8) * ((${
 		containVideoWidth + 'px'
 	} - 320px) / (1440 - 320)))`
 
@@ -1626,7 +1617,8 @@ function createBackButton(param) {
 			pageIndex === 'tailgatingP2' ||
 			pageIndex === 'glassO' ||
 			pageIndex === 'piggybackingP1' ||
-			pageIndex === 'piggybackingP2'
+			pageIndex === 'piggybackingP2' ||
+			pageIndex === 'operationW'
 		) {
 			console.log('submenu')
 			backButton.addEventListener('click', backButtonFunctionFront)
