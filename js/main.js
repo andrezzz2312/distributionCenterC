@@ -227,7 +227,7 @@ const buttonContent = {
 
 				content: [
 					`Credential or biometric is presented`,
-					`Valid credential turns LED green, unlocks turnstile and provides audio signal (tone/voice)`,
+					`Valid credential turns LED green, unlocks turnstile and provides audible signal (tone/voice)`,
 					`User walks through metal detector`,
 					`If no metal is detected, turnstile unlocks, rotates 120\u00B0, then stops and relocks`,
 					`If metal is detected, turnstile remains locked and alarm sounds`,
