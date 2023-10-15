@@ -550,6 +550,13 @@ a {
 	/* gap: 5%; */
 	z-index: 1;
 }
+.rotationContainer {
+	width: 80%;
+	height: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .viewRContainer {
 	display: flex;
 	justify-content: space-between;
@@ -698,6 +705,9 @@ li:last-child {
 
 .rotation {
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	left: 0;
 	top: 0;
 	width: 100%;
