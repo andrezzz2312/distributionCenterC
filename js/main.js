@@ -1344,6 +1344,7 @@ function createRotation() {
 	// initial.classList.add('show')
 
 	HideShowCont()
+	console.log($('#product-reel'))
 	$('#product-reel')
 		.reel(
 			'images',
