@@ -1528,6 +1528,10 @@ function backButtonFunctionBack() {
 }
 
 function createBackButton(param) {
+	const rotationBackButton = document.querySelector('#rotation_backButton')
+	if (rotationBackButton) {
+		rotationBackButton.remove()
+	}
 	console.log(pageIndex)
 	if (param === 'rotationPage') {
 		const centerContainerMade = document.createElement('div')
